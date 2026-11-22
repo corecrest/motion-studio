@@ -1,7 +1,9 @@
 {
   "name": "Motion Studio — HyperFrames",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
-  "forwardPorts": [3002],
+  "forwardPorts": [
+    3002
+  ],
   "portsAttributes": {
     "3002": {
       "label": "HyperFrames Video Studio",
@@ -16,5 +18,8 @@
         "esbenp.prettier-vscode"
       ]
     }
-  }
+  },
+  "runArgs": [
+    "--shm-size=1g"
+  ]
 }

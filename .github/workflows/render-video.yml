@@ -1,0 +1,56 @@
+name: Render video to MP4
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: 'Video folder under videos/ (e.g. brand-intro)'
+        type: string
+        required: true
+        default: brand-intro
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    env:
+      VIDEO_NAME: ${{ inputs.composition }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+      - name: Install JS dependencies
+        run: npm install --no-audit --no-fund
+      - name: Ensure render browser
+        run: npx hyperframes browser ensure
+      - name: Validate requested composition
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$VIDEO_NAME" =~ ^[a-z0-9][a-z0-9_-]{0,49}$ ]]; then
+            echo 'Invalid composition name.' >&2
+            exit 2
+          fi
+          test -f "videos/$VIDEO_NAME/index.html" || { echo 'Composition not found' >&2; exit 2; }
+      - name: Lint and render MP4
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx hyperframes lint "videos/$VIDEO_NAME"
+          mkdir -p dist
+          npx hyperframes render "videos/$VIDEO_NAME" --format mp4 --workers 2 -o "$GITHUB_WORKSPACE/dist/$VIDEO_NAME.mp4"
+          ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 "dist/$VIDEO_NAME.mp4"
+      - name: Upload downloadable video
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ inputs.composition }}-${{ github.run_number }}
+          path: dist/*.mp4
+          if-no-files-found: error
+          retention-days: 7

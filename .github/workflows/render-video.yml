@@ -22,10 +22,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install FFmpeg
+      - name: Install FFmpeg and Chrome runtime libraries
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            ffmpeg \
+            libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
+              libxkbcommon0 libatspi2.0-0 libxcomposite1 libxdamage1 libxfixes3 \
+              libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2 \
+              libx11-6 libxcb1 libx11-xcb1 libxext6 libxrender1 \
+              libglib2.0-0 libdbus-1-3 fonts-liberation
       - name: Install JS dependencies
         run: npm install --no-audit --no-fund
       - name: Ensure render browser
@@ -45,7 +51,7 @@ jobs:
           set -euo pipefail
           npx hyperframes lint "videos/$VIDEO_NAME"
           mkdir -p dist
-          npx hyperframes render "videos/$VIDEO_NAME" --format mp4 --workers 2 -o "$GITHUB_WORKSPACE/dist/$VIDEO_NAME.mp4"
+          npx hyperframes render "videos/$VIDEO_NAME" --format mp4 --workers 1 -o "$GITHUB_WORKSPACE/dist/$VIDEO_NAME.mp4"
           ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 "dist/$VIDEO_NAME.mp4"
       - name: Upload downloadable video
         uses: actions/upload-artifact@v4

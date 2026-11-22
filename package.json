@@ -1,0 +1,17 @@
+{
+  "name": "motion-studio",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Cloud Codespaces and GitHub Actions workspace for code-rendered videos",
+  "scripts": {
+    "preview": "hyperframes preview videos/brand-intro --port 3002",
+    "render": "bash scripts/render.sh brand-intro",
+    "lint": "hyperframes lint videos/brand-intro",
+    "doctor": "hyperframes doctor"
+  },
+  "devDependencies": {
+    "hyperframes": "latest",
+    "gsap": "3.14.2",
+    "three": "0.181.2"
+  }
+}

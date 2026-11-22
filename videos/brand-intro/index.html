@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Motion Studio — Brand Intro Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root { --forest: #16734b; --cream: #f5f4ee; --ink: #17251e; }
+    * { box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; margin: 0; overflow: hidden; background: var(--cream); }
+    #root { width: 1920px; height: 1080px; position: relative; overflow: hidden; background: var(--cream); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+    .clip { position: absolute; inset: 0; }
+    #eyebrow { position:absolute; top: 115px; left: 126px; font-size: 29px; font-weight: 700; letter-spacing: .25em; color: var(--forest); text-transform: uppercase; }
+    #headline { position: absolute; top: 300px; left: 124px; margin: 0; width: 1400px; font-size: 146px; font-weight: 700; line-height: 1.02; letter-spacing: -.065em; }
+    #subline { position:absolute; top: 625px; left: 129px; font-size: 39px; color:#56675c; }
+    #line { position:absolute; width:1660px; left:128px; bottom:150px; height:2px; background:#c8d3c9; }
+    #line-fill { background:var(--forest); width:0%; height:100%; }
+    .payment-card { position:absolute; left:125px; top:306px; width:1400px; height:350px; border: 2px solid #c2d2c7; background:white; padding:55px 66px; opacity:0; }
+    .kicker { color:var(--forest); font-size:26px; letter-spacing:.11em; text-transform:uppercase; font-weight:700; }
+    .amount { font-size:119px; font-weight:700; margin:18px 0; letter-spacing:-.06em; }
+    .status { font-size:32px; color:#5c6f63; }
+    #confirmation { position:absolute; left:129px; top:395px; display:flex; align-items:center; gap:36px; opacity:0; font-size:74px; font-weight:700; }
+    #confirmation-mark { width:115px; height:115px; background:var(--forest); display:flex; align-items:center; justify-content:center; color:#fff; font-size:85px; }
+    #brand-final { position:absolute; left:125px; top:390px; font-size:155px; font-weight:700; letter-spacing:-.065em; opacity:0; }
+    #brand-final span { color:var(--forest); }
+    #footer { position:absolute; right:128px; bottom:90px; color:#7c8e80; font-size:21px; letter-spacing:.13em; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="8" data-width="1920" data-height="1080" data-fps="30">
+    <main class="clip" id="visual" data-start="0" data-duration="8" data-track-index="0">
+      <div id="eyebrow">A new way to move</div>
+      <h1 id="headline">Move money.<br>Move forward.</h1>
+      <p id="subline">A placeholder product animation — replace with your own brand.</p>
+      <section class="payment-card" id="payment">
+        <div class="kicker">Transfer initiated</div>
+        <div class="amount">RWF 25,000</div>
+        <div class="status">From everyday account &nbsp; • &nbsp; To recipient</div>
+      </section>
+      <div id="confirmation"><div id="confirmation-mark">✓</div><div>Payment complete</div></div>
+      <div id="brand-final">your<span>brand.</span></div>
+      <div id="line"><div id="line-fill"></div></div>
+      <div id="footer">MOTION STUDIO · DEMO</div>
+    </main>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const timeline = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
+    timeline.fromTo('#eyebrow', {opacity:0, y:20}, {opacity:1, y:0, duration:.45}, .1);
+    timeline.fromTo('#headline', {opacity:0, y:75}, {opacity:1, y:0, duration:.85}, .3);
+    timeline.fromTo('#subline', {opacity:0, y:20}, {opacity:1, y:0, duration:.5}, .85);
+    timeline.to('#line-fill', { width:'100%', duration:7.7, ease:'none' }, .1);
+    timeline.to(['#headline','#subline'], {opacity:0, y:-22, duration:.35}, 1.75);
+    timeline.fromTo('#payment', {opacity:0, y:80}, {opacity:1, y:0, duration:.65}, 2.08);
+    timeline.to('#payment', {opacity:0, y:-40, duration:.43}, 3.78);
+    timeline.fromTo('#confirmation', {opacity:0, y:45}, {opacity:1, y:0, duration:.48}, 4.23);
+    timeline.to('#confirmation', {opacity:0, y:-25, duration:.4}, 5.63);
+    timeline.fromTo('#brand-final', {opacity:0, y:55}, {opacity:1, y:0, duration:.68}, 6.17);
+    timeline.to('#eyebrow', {opacity:0, duration:.2}, 6.2);
+    window.__timelines.main = timeline;
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ranga · Google Play preview</title>
+<link rel="stylesheet" href="style.css">
+<script src="assets/gsap.min.js"></script>
+</head>
+<body>
+<main id="stage" data-composition-id="main" data-start="0" data-duration="25" data-width="1920" data-height="1080" data-fps="30">
+<audio id="sound" src="assets/ranga-sound.m4a" data-start="0" data-duration="25" data-track-index="1"></audio>
+<div class="clip" id="preview" data-start="0" data-duration="25" data-track-index="0">
+  <img class="wordmark" src="assets/wordmark.png" alt="Ranga">
+  <div class="copy" id="accounts-copy"><div class="rule"></div><h1>See your accounts<br>in one place.</h1><p>Keep track of cash, mobile money<br>and bank balances.</p></div>
+  <div class="copy" id="pay-copy"><div class="rule"></div><h2>Start a payment<br>in Ranga.</h2><p>Choose a saved recipient and amount.<br>Complete payment via your provider’s USSD menu.</p></div>
+  <div class="copy" id="activity-copy"><div class="rule"></div><h2>Know where<br>your money went.</h2><p>Browse your activity and revisit<br>recorded payment details.</p></div>
+  <div class="copy" id="plan-copy"><div class="rule"></div><h2>See what’s<br>coming due.</h2><p>Track upcoming bills and<br>recurring payments.</p></div>
+  <div class="panel"></div>
+  <div class="phone">
+    <div class="viewport">
+      <img id="home" class="app" src="assets/screens/home.webp" alt="Home overview">
+      <img id="accounts" class="app" src="assets/screens/accounts.webp" alt="Accounts">
+      <img id="pay" class="app" src="assets/screens/pay.webp" alt="Payment initiation">
+      <img id="activity" class="app" src="assets/screens/activity.webp" alt="Activity">
+      <img id="receipt" class="app" src="assets/screens/receipt.webp" alt="Recorded payment details">
+      <img id="planned" class="app" src="assets/screens/planned.webp" alt="Planned payments">
+      <img id="plan-detail" class="app" src="assets/screens/plan-detail.webp" alt="Recurring payment details">
+    </div>
+  </div>
+  <span class="sample">Sample data</span>
+  <div id="wipe"></div>
+  <section id="closing">
+    <img class="icon" src="assets/ranga-icon.png" alt="">
+    <img class="brand" src="assets/wordmark.png" alt="Ranga">
+    <p>Your money. Your move.</p>
+  </section>
+</div>
+</main>
+<script src="motion.js"></script>
+</body>
+</html>

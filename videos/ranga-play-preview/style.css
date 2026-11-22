@@ -1,0 +1,24 @@
+:root { --paper:#f8f7f3; --ink:#15271f; --green:#00664b; --sage:#dcebe2; }
+* { box-sizing:border-box; }
+html,body,#stage { margin:0;width:1920px;height:1080px;overflow:hidden; }
+body { font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper); }
+#stage { position:relative; }
+.clip,#closing,#wipe { position:absolute;inset:0;overflow:hidden; }
+h1,h2,p { margin:0; }
+.wordmark { position:absolute;left:128px;top:104px;width:174px; }
+.copy { position:absolute;left:128px;top:341px;width:785px;opacity:0; }
+#accounts-copy { opacity:1; }
+.rule { width:74px;height:6px;background:var(--green);margin-bottom:36px; }
+h1,h2 { font-size:94px;line-height:.99;letter-spacing:-.075em; }
+.copy p { margin-top:35px;color:#40594b;font-size:35px;line-height:1.32;letter-spacing:-.032em; }
+.panel { position:absolute;inset:0 0 0 990px;background:var(--sage); }
+.phone { position:absolute;left:1240px;top:76px;width:438px;height:854px;padding:10px;border-radius:44px;background:#153b2e; }
+.viewport { position:relative;width:100%;height:100%;overflow:hidden;border-radius:34px;background:var(--paper); }
+.app { position:absolute;inset:0;width:100%;height:100%;opacity:0; }
+#home { opacity:1; }
+.sample { position:absolute;left:990px;right:0;top:960px;text-align:center;color:#3c5649;font-size:24px; }
+#wipe { background:#0c5038; }
+#closing { background:var(--paper);opacity:0;text-align:center; }
+.icon { position:absolute;width:142px;left:889px;top:258px; }
+.brand { position:absolute;width:415px;left:752.5px;top:449px; }
+#closing p { position:absolute;left:0;right:0;top:625px;font-size:57px;letter-spacing:-.06em; }

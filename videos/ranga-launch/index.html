@@ -12,75 +12,45 @@
   <audio id="sound" src="assets/ranga-sound.m4a" data-start="0" data-duration="25" data-track-index="1"></audio>
   <div id="film" class="clip" data-start="0" data-duration="25" data-track-index="0">
     <section id="opening" class="scene">
-      <div class="opening-rule"></div>
+      <div class="opening-rule rule"></div>
       <h1><span>Your money.</span><span>Your move.</span></h1>
       <p>Everyday payments and money management</p>
     </section>
     <section id="product" class="scene">
       <div class="copy">
-        <div class="copy-rule"></div>
-        <h2 id="home-copy">Everything<br>in view.</h2>
-        <h2 id="pay-copy">Make your<br>move.</h2>
+        <div class="rule"></div>
+        <h2 id="overview-copy">See where you stand.</h2>
+        <h2 id="pay-copy">Make your move.</h2>
         <h2 id="activity-copy">Keep track.</h2>
+        <h2 id="plan-copy">See what’s due.</h2>
       </div>
-      <div class="device">
-        <div class="screen">
-          <div class="status"><span>09:41</span><span><i class="signal" aria-label="Signal"><b></b><b></b><b></b></i><i class="battery" aria-label="Battery"></i></span></div>
-          <section class="page" id="home">
-            <header><strong>ranga</strong><span class="avatar">A</span></header>
-            <div class="summary"><small>Net worth</small><strong>RWF 248,500</strong><div class="summary-foot"><span>Assets<br><b>248,500</b></span><span>Liabilities<br><b>0</b></span></div></div>
-            <h3>Accounts</h3>
-            <div class="row"><span class="tile">M</span><span>Mobile wallet<small>Mobile money</small></span><b>82,500</b></div>
-            <div class="row"><span class="tile">E</span><span>Everyday account<small>Bank account</small></span><b>166,000</b></div>
-            <h3>Quick send</h3>
-            <div class="people"><div><span>AU</span>Aline</div><div><span>JM</span>Jean</div><div><span>NI</span>Nadia</div></div>
+      <div id="device">
+        <div class="viewport">
+          <img id="home" class="app" src="assets/screens/home.webp" alt="Ranga Home">
+          <img id="accounts" class="app" src="assets/screens/accounts.webp" alt="Account balances">
+          <img id="pay" class="app" src="assets/screens/pay.webp" alt="Pay with a saved beneficiary">
+          <section id="handoff" class="app">
+            <div aria-hidden="true">&#8599;&#65038;</div>
+            <h3>Continue via USSD</h3>
+            <p>Complete the payment in your provider’s USSD menu.</p>
           </section>
-          <section class="page" id="pay">
-            <header><strong>Pay</strong></header>
-            <div class="amount"><small>Amount</small><strong><i>RWF</i> <span id="digits">0</span></strong></div>
-            <div class="field" id="source-field"><small>From</small><strong id="source-label">Choose an account</strong><span>›</span></div>
-            <div class="field" id="beneficiary-field"><small>To</small><strong id="beneficiary-label">Choose a beneficiary</strong><span>›</span></div>
-            <div class="keys"><span>1</span><span>2</span><span>3</span><span>4</span><span id="key5">5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>00</span><span id="key0">0</span><span>⌫</span></div>
-            <div class="action" id="review-button">Review payment <span>›</span></div>
-            <div class="sheet" id="source-sheet"><h3>Choose an account</h3><div class="row"><span class="tile">M</span><span>Mobile wallet</span><b>RWF 82,500</b></div><div class="row"><span class="tile">E</span><span>Everyday account</span><b>RWF 166,000</b></div></div>
-            <div class="sheet" id="beneficiary-sheet"><h3>Saved beneficiaries</h3><div class="row"><span class="tile">AU</span><span>Aline U.</span><b>›</b></div><div class="row"><span class="tile">JM</span><span>Jean M.</span><b>›</b></div></div>
-          </section>
-          <section class="page" id="review">
-            <header><strong>Review payment</strong></header>
-            <div class="amount"><small>Payment amount</small><strong><i>RWF</i> 5,000</strong></div>
-            <div class="field"><small>From</small><strong>Mobile wallet</strong></div>
-            <div class="field"><small>To</small><strong>Aline U.</strong></div>
-            <div class="field"><small>Payment channel</small><strong>USSD</strong></div>
-            <div class="note">Review these details before continuing in your payment channel.</div>
-            <div class="action">Continue via USSD <span>›</span></div>
-          </section>
-          <section class="page" id="handoff">
-            <header><strong>Payment handoff</strong></header>
-            <div class="handoff-message"><span class="tile">↗︎</span><h3>Continue via USSD</h3><p>Complete the payment in your provider’s USSD menu.</p></div>
-          </section>
-          <section class="page" id="activities">
-            <header><strong>Activities</strong><span class="avatar">≡</span></header>
-            <div class="date-strip"><span>Mon<b>16</b></span><span>Tue<b>17</b></span><span>Wed<b>18</b></span><span>Thu<b>19</b></span><span class="today">Fri<b>20</b></span></div>
-            <div class="activity-window"><div id="activity-list"></div></div>
-          </section>
-          <section class="page" id="receipt">
-            <header><strong>Transaction details</strong></header>
-            <div class="summary receipt-summary"><small>Groceries</small><strong>− RWF 3,600</strong><div class="summary-foot">Recorded expense</div></div>
-            <div class="field"><small>Paid from</small><strong>Mobile wallet</strong></div>
-            <div class="field"><small>Date</small><strong>19 Nov 2026</strong></div>
-            <div class="field"><small>Category</small><strong>Food and groceries</strong></div>
-          </section>
-          <nav><span>⌂<small>Home</small></span><span class="pay-pill">↗︎ &nbsp; Pay</span><span>≡<small>Activities</small></span></nav>
-          <div id="touch"></div>
+          <div id="activity" class="app">
+            <img id="activity-body" src="assets/screens/activity.webp" alt="Activity calendar and transaction history">
+            <div class="activity-nav"></div>
+          </div>
+          <img id="receipt" class="app" src="assets/screens/receipt.webp" alt="Recorded grocery expense">
+          <img id="planned" class="app" src="assets/screens/planned.webp" alt="Planned payments">
+          <img id="plan-detail" class="app" src="assets/screens/plan-detail.webp" alt="Recurring internet payment details">
+          <div id="tap" aria-hidden="true"></div>
         </div>
       </div>
-      <p class="demo">Illustrative interface · Demo data</p>
+      <p class="demo">App walkthrough · Sample data</p>
     </section>
     <div id="wipe"></div>
     <section id="brand" class="scene">
-      <div class="brand-rule"></div>
       <img class="brand-icon" src="assets/ranga-icon.png" alt="Ranga icon">
-      <div class="wordmark-window"><img src="assets/wordmark.png" alt="Ranga wordmark"></div>
+      <div class="brand-rule rule"></div>
+      <div class="wordmark-window"><img src="assets/wordmark.png" alt="Ranga"></div>
       <p>Pay. Track. Stay in control.</p>
     </section>
   </div>

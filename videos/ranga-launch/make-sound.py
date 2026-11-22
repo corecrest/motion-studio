@@ -25,17 +25,17 @@ def voice(start, length, hz, gain, attack, decay, pan=0, overtone=0.12):
 # Restrained four-chord bed with a short two-note signature for the brand reveal.
 for start, notes in [
     (0.36, (110, 164.81, 261.63)),
-    (4.06, (87.31, 130.81, 220)),
-    (8.02, (98, 146.83, 246.94)),
-    (13.98, (82.41, 123.47, 196)),
-    (19.68, (110, 164.81, 261.63)),
+    (3.35, (87.31, 130.81, 220)),
+    (7.42, (98, 146.83, 246.94)),
+    (12.86, (82.41, 123.47, 196)),
+    (20.91, (110, 164.81, 261.63)),
 ]:
     for index, note in enumerate(notes):
         voice(start + 0.05 * index, 4.8, note, 0.042 - 0.009 * index, 0.46, 2.5, (index - 1) * 0.23)
 
-for start, note in [(0.42, 220), (1.06, 261.63), (4.12, 196), (13.16, 246.94), (14.05, 196), (20.05, 329.63), (20.43, 440)]:
+for start, note in [(0.42, 220), (1.06, 261.63), (3.40, 196), (10.64, 246.94), (12.86, 196), (17.40, 220), (21.70, 329.63), (22.08, 440)]:
     voice(start, 1.1, note, 0.09, 0.025, 0.22)
-for index, start in enumerate((8.59, 8.81, 9.03, 9.25, 10.18, 11.36, 11.91)):
+for index, start in enumerate((5.38, 10.45, 15.48, 19.27)):
     voice(start, 0.105, 670 if index % 2 else 540, 0.039, 0.008, 0.027, 0.06)
 
 interleaved = array("f")

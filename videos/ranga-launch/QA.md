@@ -1,26 +1,9 @@
-# Render and quality assurance
+# Ranga launch video · Screenshot revision
 
-## Reproduce
+The film uses seven supplied app screenshots. Home and Accounts establish the overview, Pay shows a selected beneficiary and amount, Activity leads to a recorded transaction, and Planned payments leads to a recurring internet bill. The USSD card is an explanatory graphic. Payment completion happens in the provider’s menu.
 
-From the Motion Studio repository root, install the repository dependencies and run:
+The embedded WebP files omit the Pay screen’s phone number and the receipt’s reference. The original uploads are kept outside the project. The existing Ranga icon and wordmark close the piece.
 
-```bash
-bash scripts/render.sh ranga-launch
-```
+The composition uses a paused GSAP timeline, locally bundled assets and an original synthesized soundtrack. Edit `index.html`, `style.css` and `motion.js`. Run `python3 videos/ranga-launch/make-sound.py` to regenerate the retimed sound bed.
 
-The composition is a 25-second, 1080 × 1920 HTML project with one paused, seekable GSAP timeline. Edit the markup in `index.html`, the design in `style.css`, and the timing and demonstration data in `motion.js`. GSAP 3.14.2 is included for offline rendering and retains its upstream license notice. Regenerate the original audio with `python3 videos/ranga-launch/make-sound.py` and FFmpeg.
-
-## Asset provenance
-
-- Wordmark extracted from the settled end frame of the original Ranga wordmark splash. The mark itself was left intact.
-- Icon from the existing forest-green ribbon Ranga artwork. Transparent margins were trimmed and the image was resized proportionally.
-- Screen layouts reference existing Ranga material. The app shown is an editable reconstruction with fictional data, identified on screen as an illustrative interface. There are no third-party bank or provider marks.
-- The 5,000 RWF example stops at the USSD handoff. The later receipt is a separate recorded expense. The film makes no transfer confirmation, deposit-taking, provider partnership, store availability, or financial-insights claim.
-- The stereo soundtrack is original additive synthesis. There are no external samples.
-
-## Validation
-
-- HyperFrames 0.9.81. First pass at 540 × 960 and 15 fps, then final capture at 1080 × 1920 and 30 fps using software rendering.
-- Visually reviewed representative frames for text fit, contrast, account and payment detail legibility, and brand artwork. Checked continuity across the full runtime at half-second intervals.
-- The HyperFrames linter reports zero errors and one advisory about the single top-level film clip. Its child beats are editable by timestamp in `motion.js`.
-- FFprobe and FFmpeg checks cover stream metadata, all 750 video frames, and the full stereo audio track.
+From the Motion Studio repository root, run `bash scripts/render.sh ranga-launch` to reproduce the export. The draft was rendered at 540 × 960 and 15 fps, with representative frames checked for readability and alignment. HyperFrames lint reports zero errors and one advisory about the single nested film clip. Delivery target is 25 seconds, 1080 × 1920 at 30 fps, H.264 (yuv420p) with stereo AAC.

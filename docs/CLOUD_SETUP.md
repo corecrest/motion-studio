@@ -39,3 +39,15 @@ GitHub Codespaces can run in a mobile browser, though the browser IDE works bett
 - Codex, Claude Code or other coding-agent sign-in and billing are separate.
 - For reproducible builds, generate and commit `package-lock.json` from a successful `npm install`, and pin the resolved HyperFrames version instead of `latest`.
 - This project does not provide photorealistic image-to-video generation; that requires a separate service or model.
+
+## Codespaces Chrome troubleshooting (November 2026)
+
+If `npm run doctor` reports Chrome missing shared libraries (e.g. `libnss3.so`, `libnspr4.so`) or `/dev/shm` of only 64 MB:
+
+1. Run `git pull --ff-only` inside the Codespace to get the updated `.devcontainer` config.
+2. Open the VS Code Command Palette (`F1` or `Ctrl+Shift+P`) and run **Codespaces: Rebuild Container** (sometimes **Dev Containers: Rebuild Container**).
+3. Rebuild recreates the container with `--shm-size=1g` and runs `.devcontainer/setup.sh` to install the Chrome runtime libraries. A normal terminal restart does not change container shared-memory allocation.
+4. Run `df -h /dev/shm`, then `npm run doctor` and `npm run preview`.
+5. Try `bash scripts/render.sh brand-intro` and verify `dist/brand-intro.mp4` exists.
+
+Docker is unnecessary for local CLI rendering. Doctor may continue to mark Docker, Whisper, Kokoro and MusicGen as unavailable: those are optional for this workflow. If the rebuild fails, read its setup log and report the exact error rather than installing Docker into a Codespace blindly.
